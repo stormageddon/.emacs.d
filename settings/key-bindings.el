@@ -29,8 +29,8 @@
 
 ;; Mark additional regions matching current region
 (global-set-key (kbd "M-æ") 'mc/mark-all-dwim)
-(global-set-key (kbd "C-å") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-æ") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-x p") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-x n") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-Æ") 'mc/mark-more-like-this-extended)
 (global-set-key (kbd "M-å") 'mc/mark-all-in-region)
 
@@ -342,5 +342,12 @@
 (define-key occur-mode-map (kbd "v") 'occur-mode-display-occurrence)
 (define-key occur-mode-map (kbd "n") 'next-line)
 (define-key occur-mode-map (kbd "p") 'previous-line)
+
+;; Ethan's additions...
+(global-set-key (kbd "C-x C-o") 'other-window)
+(global-set-key (kbd "C-x o") 'other-window)
+(global-set-key (kbd "C-.") 'end-of-buffer)
+(global-set-key (kbd "C-,") 'beginning-of-buffer)
+(global-set-key (kbd "C-'") 'indent-region)
 
 (provide 'key-bindings)

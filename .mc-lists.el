@@ -158,6 +158,7 @@
         touch-buffer-file
         transpose-params
         transpose-sexps
+        wdired-finish-edit
         wdired-next-line
         wdired-previous-line
         wrap-region-trigger
@@ -174,6 +175,7 @@
         beginning-of-buffer
         cider-eval-ns-form
         cleanup-buffer
+        coffee-dedent-line-backspace
         describe-key
         dired-toggle-read-only
         edebug-next-mode
@@ -189,6 +191,7 @@
         kill-this-buffer
         kmacro-end-or-call-macro
         magit-status
+        make-frame-command
         mc/add-cursor-on-click
         mc/add-cursors-to-all-matches
         multiple-cursors-mode

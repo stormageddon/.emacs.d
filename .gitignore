@@ -15,3 +15,7 @@ site-lisp/adventur-mode
 /url/
 /var/
 /.sx/
+ac-comphist.dat
+ido.last
+history
+recentf

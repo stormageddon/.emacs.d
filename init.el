@@ -21,6 +21,12 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
+;; Ethan
+;; Tweak the settings
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "#d8d9da")
+(set-face-foreground 'highlight nil)
+
 ;; Set up appearance early
 (require 'appearance)
 
@@ -88,6 +94,10 @@
      gitignore-mode
      clojure-mode
      groovy-mode
+     coffee-mode
+     auto-complete
+     jade-mode
+     sws-mode
      prodigy
      cider
      )))
@@ -126,7 +136,6 @@
 (require 'setup-ffip)
 (require 'setup-html-mode)
 (require 'setup-paredit)
-
 (require 'prodigy)
 (global-set-key (kbd "C-x M-m") 'prodigy)
 
@@ -150,6 +159,48 @@
 (eval-after-load 'ruby-mode '(require 'setup-ruby-mode))
 (eval-after-load 'clojure-mode '(require 'setup-clojure-mode))
 (eval-after-load 'markdown-mode '(require 'setup-markdown-mode))
+
+;; Fix CoffeeScript
+(setq whitespace-action '(auto-cleanup))
+(setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
+(custom-set-variables '(coffee-tab-width 2))
+
+(defvar auto-minor-mode-alist ()
+  "Alist of filename patterns vs correpsonding minor mode functions, see `auto-mode-alist'
+All elements of this alist are checked, meaning you can enable multiple minor modes for the same regexp.")
+(defun enable-minor-mode-based-on-extension ()
+  "check file name against auto-minor-mode-alist to enable minor modes
+the checking happens for all pairs in auto-minor-mode-alist"
+  (when buffer-file-name
+    (let ((name buffer-file-name)
+          (remote-id (file-remote-p buffer-file-name))
+          (alist auto-minor-mode-alist))
+      ;; Remove backup-suffixes from file name.
+      (setq name (file-name-sans-versions name))
+      ;; Remove remote file name identification.
+      (when (and (stringp remote-id)
+                 (string-match-p (regexp-quote remote-id) name))
+        (setq name (substring name (match-end 0))))
+      (while (and alist (caar alist) (cdar alist))
+        (if (string-match (caar alist) name)
+            (funcall (cdar alist) 1))
+        (setq alist (cdr alist))))))
+
+(add-hook 'find-file-hook 'enable-minor-mode-based-on-extension)
+
+(setq auto-minor-mode-alist
+  (cons '("\\.coffee$" . whitespace-mode)
+    auto-minor-mode-alist))
+
+(setq auto-minor-mode-alist
+  (cons '("\\.coffee$" . auto-complete-mode)
+    auto-minor-mode-alist))
+
+(setq auto-minor-mode-alist
+  (cons '("\\.js$" . auto-complete-mode)
+    auto-minor-mode-alist))
+
+(setq js-indent-level 2)
 
 ;; Load stuff on demand
 (autoload 'skewer-start "setup-skewer" nil t)

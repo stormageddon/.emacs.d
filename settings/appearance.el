@@ -22,7 +22,7 @@
 
 (defun use-default-theme ()
   (interactive)
-  (load-theme 'default-black)
+  (load-theme 'better-tango-dark)
   (when (boundp 'magnars/default-font)
     (set-face-attribute 'default nil :font magnars/default-font)))
 
