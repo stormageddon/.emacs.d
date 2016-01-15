@@ -44,3 +44,8 @@
  ;; If there is more than one, they won't work right.
  '(js2-error-face ((t nil)) t)
  '(js2-warning-face ((t nil)) t))
+
+(defun my-clear ()
+  (interactive)
+  (let ((comint-buffer-maximum-size 0))
+    (comint-truncate-buffer)))
