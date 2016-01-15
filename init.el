@@ -27,6 +27,8 @@
 (set-face-background 'hl-line "#d8d9da")
 (set-face-foreground 'highlight nil)
 
+(setq magit-last-seen-setup-instructions "1.4.0")
+
 ;; Set up appearance early
 (require 'appearance)
 
