@@ -13,6 +13,10 @@
 (setq-default js2-include-gears-externs nil)
 (setq-default js2-concat-multiline-strings 'eol)
 (setq-default js2-rebind-eol-bol-keys nil)
+(custom-set-variables
+ '(js2-basic-offset 2)
+ '(js2-bounce-indent-p t)
+)
 
 ;; Let flycheck handle parse errors
 (setq-default js2-show-parse-errors nil)
