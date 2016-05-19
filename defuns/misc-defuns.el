@@ -182,4 +182,11 @@ Both PATTERN and CONTENTS are matched as regular expressions."
   (kmacro-push-ring)
   (edit-kbd-macro 'view-lossage))
 
+;; Convert a region of ANSI colorized output to faces
+(defun colorize-ansi-region (start end)
+  (interactive "r")
+  (ansi-color-apply-on-region start end))
+
+(autoload 'colorize-ansi-region "ansi-color")
+
 (defmacro comment (&rest ignore))

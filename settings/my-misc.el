@@ -38,6 +38,7 @@
 (global-set-key (kbd "C-x 8 - >") (λ (insert "→")))
 (global-set-key (kbd "C-x 8 8") (λ (insert "∞")))
 (global-set-key (kbd "C-x 8 ( c )") (λ (insert "©")))
+(global-set-key (kbd "C-x 8 v") (λ (insert "✓")))
 
 ;; Add JSP expansions to html-mode
 (eval-after-load "sgml-mode" '(require 'jsp-expansions))
@@ -51,5 +52,14 @@
   (let ((buf-count (length (buffer-list))))
     (if (or (interactive-p) display-anyway)
         (message "%d buffers in this Emacs" buf-count)) buf-count))
+
+;; Unfill paragraph
+(defun unfill-paragraph (&optional region)
+  "Takes a multi-line paragraph and makes it into a single line of text."
+  (interactive (progn (barf-if-buffer-read-only) '(t)))
+  (let ((fill-column (point-max)))
+    (fill-paragraph nil region)))
+
+(global-set-key (kbd "M-U") 'unfill-paragraph)
 
 (provide 'my-misc)

@@ -21,6 +21,7 @@
 
 ;; Expand region (increases selected region by semantic units)
 (global-set-key (if is-mac (kbd "C-@") (kbd "C-'")) 'er/expand-region)
+(global-set-key (kbd "C-*") 'er/contract-region)
 
 ;; Experimental multiple-cursors
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -50,7 +51,7 @@
 (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
 
 ;; Set anchor to start rectangular-region-mode
-(global-set-key (kbd "H-SPC") 'set-rectangular-region-anchor)
+(global-set-key (kbd "C-M-SPC") 'set-rectangular-region-anchor)
 
 ;; Replace rectangle-text with inline-string-rectangle
 (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
@@ -126,6 +127,10 @@
 (global-set-key (kbd "M-I") 'change-inner)
 (global-set-key (kbd "M-O") 'change-outer)
 
+;; Font size
+(define-key global-map (kbd "C-+") 'zoom-frm-in)
+(define-key global-map (kbd "C--") 'zoom-frm-out)
+
 (global-set-key (kbd "s-i") 'copy-inner)
 (global-set-key (kbd "s-o") 'copy-outer)
 
@@ -179,6 +184,7 @@
 
 ;; Should be able to eval-and-replace anywhere.
 (global-set-key (kbd "C-c C-e") 'eval-and-replace)
+(global-set-key (kbd "M-s-e") 'eval-and-replace)
 
 ;; Navigation bindings
 (global-set-key [remap goto-line] 'goto-line-with-feedback)
@@ -187,6 +193,8 @@
 (global-set-key (kbd "<home>") 'beginning-of-buffer)
 (global-set-key (kbd "<next>") 'end-of-buffer)
 (global-set-key (kbd "<end>") 'end-of-buffer)
+(global-set-key (kbd "M-<up>") 'beginning-of-buffer)
+(global-set-key (kbd "M-<down>") 'end-of-buffer)
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
 
@@ -194,6 +202,9 @@
 (global-set-key (kbd "M-<down>") 'smart-down)
 (global-set-key (kbd "M-<left>") 'smart-backward)
 (global-set-key (kbd "M-<right>") 'smart-forward)
+
+;; Tags
+(global-set-key (kbd "M-?") 'tags-search)
 
 ;; Webjump let's you quickly search google, wikipedia, emacs wiki
 (global-set-key (kbd "C-x g") 'webjump)
@@ -247,8 +258,8 @@
 (global-set-key (kbd "<s-down>") 'windmove-down)
 
 ;; Magit
-(global-set-key (kbd "C-x m") 'magit-status)
-(autoload 'magit-status "magit")
+(global-set-key (kbd "C-x m") 'magit-status-fullscreen)
+(autoload 'magit-status-fullscreen "magit")
 
 ;; Clever newlines
 (global-set-key (kbd "C-o") 'open-line-and-indent)
@@ -278,7 +289,7 @@
 (global-set-key (kbd "M-s l") 'sort-lines)
 
 ;; Increase number at point (or other change based on prefix arg)
-(global-set-key (kbd "C-+") 'change-number-at-point)
+(global-set-key (kbd "C-M-+") 'change-number-at-point)
 (global-set-key (kbd "C-?") 'subtract-number-at-point)
 (eval-after-load 'undo-tree '(define-key undo-tree-map (kbd "C-?") nil))
 
@@ -315,6 +326,7 @@
 (global-unset-key (kbd "C-x C-o")) ;; which used to be delete-blank-lines (also bound to C-c C-<return>)
 (global-set-key (kbd "C-x C-o ja") (ffip-create-pattern-file-finder "*.java"))
 (global-set-key (kbd "C-x C-o js") (ffip-create-pattern-file-finder "*.js"))
+(global-set-key (kbd "C-x C-o jn") (ffip-create-pattern-file-finder "*.json"))
 (global-set-key (kbd "C-x C-o ht") (ffip-create-pattern-file-finder "*.html"))
 (global-set-key (kbd "C-x C-o jp") (ffip-create-pattern-file-finder "*.jsp"))
 (global-set-key (kbd "C-x C-o cs") (ffip-create-pattern-file-finder "*.css"))
@@ -335,7 +347,12 @@
 (global-set-key (kbd "C-x C-o gr") (ffip-create-pattern-file-finder "*.groovy"))
 (global-set-key (kbd "C-x C-o ga") (ffip-create-pattern-file-finder "*.gradle"))
 (global-set-key (kbd "C-x C-o sc") (ffip-create-pattern-file-finder "*.scala"))
+(global-set-key (kbd "C-x C-o ss") (ffip-create-pattern-file-finder "*.scss"))
 (global-set-key (kbd "C-x C-o co") (ffip-create-pattern-file-finder "*.conf"))
+(global-set-key (kbd "C-x C-o j2") (ffip-create-pattern-file-finder "*.j2"))
+(global-set-key (kbd "C-x C-o sh") (ffip-create-pattern-file-finder "*.sh"))
+(global-set-key (kbd "C-x C-o ic") (ffip-create-pattern-file-finder "*.ico"))
+(global-set-key (kbd "C-x C-o sv") (ffip-create-pattern-file-finder "*.svg"))
 (global-set-key (kbd "C-x C-o !") (ffip-create-pattern-file-finder "*"))
 
 ;; View occurrence in occur mode
@@ -349,5 +366,21 @@
 (global-set-key (kbd "C-.") 'end-of-buffer)
 (global-set-key (kbd "C-,") 'beginning-of-buffer)
 (global-set-key (kbd "C-'") 'indent-region)
+
+(global-set-key (kbd "M-{") '(lambda ()
+                               (interactive)
+                               (if (search-forward "{" nil t)
+                                   (backward-char 1))))
+
+(global-set-key (kbd "M-}") '(lambda ()
+                               (interactive)
+                               (if (search-forward "}" nil t)
+                                   (backward-char 1))))
+
+;; Convert ANSI SGR colored output to faces
+(global-set-key (kbd "C-c C-k") 'colorize-ansi-region)
+
+;; org-agenda
+(global-set-key (kbd "C-c a") 'org-agenda)
 
 (provide 'key-bindings)

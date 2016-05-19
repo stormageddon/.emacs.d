@@ -58,8 +58,9 @@
                  "/build"
                  "/dist"
                  "/vendor"
-                 "/.cask"
+                 ".cask"
                  "/generated"
+                 "/resources/public/js/compiled"
                  "/.repl"
                  "/.tmp")))
 

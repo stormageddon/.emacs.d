@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        abbrev-prefix-mark
         ac-complete
         adv-dash
         adv-dot
@@ -32,6 +33,8 @@
         cljr-splice-sexp-killing-backward
         cljr-thread-first-all
         cljr-unwind
+        clojure-backward-logical-sexp
+        clojure-forward-logical-sexp
         clojure-toggle-keyword-string
         complete-symbol
         cua-replace-region
@@ -42,6 +45,7 @@
         dired-back-to-start-of-files
         down-list
         duplicate-current-line-or-region
+        electric-newline-and-maybe-indent
         end-of-buffer
         eval-and-replace
         eval-last-sexp
@@ -55,10 +59,12 @@
         html-paragraph
         html-wrap-in-tag
         insert-postfix-whitespace
+        isearch-forward-use-region
         js2-beginning-of-line
         js2-end-of-line
         js2-insert-and-indent
         js2r-inline-var
+        js2r-kill
         js2r-move-line-up
         js2r-split-string
         js2r-var-to-this
@@ -71,6 +77,7 @@
         live-cycle-clj-coll
         magit-stage-item
         markdown-enter-key
+        markdown-exdent-or-delete
         markdown-insert-link
         move-line-down
         move-line-up
@@ -128,17 +135,24 @@
         paredit-wrap-round
         paredit-wrap-round-from-behind
         paredit-wrap-square
+        previous-error-no-select
         quoted-insert
+        ruby-electric-brace
         save-region-or-current-line
         sgml-delete-tag
         sgml-maybe-name-self
         sgml-slash
+        sh-assignment
         skeleton-pair-insert-maybe
         slime-space
         sp--self-insert-command
         sp-remove-active-pair-overlay
         sp-self-insert-command
         subtract-number-at-point
+        subword-right
+        tagedit-forward-barf-tag
+        subword-left
+        subword-right
         tagedit-forward-slurp-tag
         tagedit-insert-dot
         tagedit-insert-equal
@@ -176,6 +190,8 @@
         cider-eval-ns-form
         cleanup-buffer
         coffee-dedent-line-backspace
+        clj-jump-to-other-file
+        custom-persp/emacs
         describe-key
         dired-toggle-read-only
         edebug-next-mode
@@ -185,21 +201,29 @@
         goto-line-with-feedback
         handle-switch-frame
         ido-switch-buffer
+        js2-enter-key
+        js2r-expand-object
+        js2r-add-to-globals-annotation
         js2r-extract-var
         js2r-rename-var
         jump-between-source-and-test-files
         kill-this-buffer
         kmacro-end-or-call-macro
+        magit-copy-buffer-revision
         magit-status
         make-frame-command
         mc/add-cursor-on-click
         mc/add-cursors-to-all-matches
         multiple-cursors-mode
         ns-prev-frame
+        paredit-backward-kill-word
         persp-switch
         shell
         skewer-load-buffer
         smex
+        subword-left
+        toggle-read-only
+        view-echo-area-messages
         wgrep-change-to-wgrep-mode
         wgrep-finish-edit
         wgrep-save-all-buffers

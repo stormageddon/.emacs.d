@@ -1,7 +1,13 @@
-(setq visible-bell t
-      font-lock-maximum-decoration t
+(setq font-lock-maximum-decoration t
       color-theme-is-global t
       truncate-partial-width-windows nil)
+
+;; Don't beep. Don't visible-bell (fails on el capitan). Just blink the modeline on errors.
+
+(setq visible-bell nil)
+(setq ring-bell-function (lambda ()
+                           (invert-face 'mode-line)
+                           (run-with-timer 0.05 nil 'invert-face 'mode-line)))
 
 ;; Highlight current line
 (global-hl-line-mode 1)
@@ -36,6 +42,13 @@
 
 (use-default-theme)
 
+;; Preeeetty font in Emacs 24/Ubuntu
+(if is-mac nil
+  (set-default-font "DejaVu Sans Mono")
+  (set-face-attribute 'default nil :height 105))
+
+(set-default-font "Source Code Pro Medium")
+
 ;; Don't defer screen updates when performing operations
 (setq redisplay-dont-pause t)
 
@@ -58,6 +71,10 @@
 ;; Make zooming affect frame instead of buffers
 (require 'zoom-frm)
 
+;; Sweet window-splits
+(defadvice split-window-right (after balance activate) (balance-windows))
+(defadvice delete-window (after balance activate) (balance-windows))
+
 ;; Unclutter the modeline
 (require 'diminish)
 (eval-after-load "yasnippet" '(diminish 'yas-minor-mode))
@@ -70,9 +87,7 @@
 (eval-after-load "skewer-html" '(diminish 'skewer-html-mode))
 (eval-after-load "smartparens" '(diminish 'smartparens-mode))
 (eval-after-load "guide-key" '(diminish 'guide-key-mode))
-(eval-after-load "magit" '(diminish 'magit-auto-revert-mode))
 (eval-after-load "whitespace-cleanup-mode" '(diminish 'whitespace-cleanup-mode))
-(eval-after-load "subword" '(diminish 'subword-mode))
 
 (defmacro rename-modeline (package-name mode new-name)
   `(eval-after-load ,package-name
