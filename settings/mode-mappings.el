@@ -94,6 +94,10 @@
 (add-to-list 'auto-mode-alist '("\\.babelrc$" . javascript-mode))
 (add-to-list 'magic-mode-alist '("#!/usr/bin/env node" . js2-mode))
 
+;; YAML/Salt
+(add-to-list 'auto-mode-alist '("\\.sls$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+
 ;; Configuration files
 (add-to-list 'auto-mode-alist '("\\.offlineimaprc$" . conf-mode))
 
