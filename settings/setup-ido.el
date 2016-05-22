@@ -4,10 +4,10 @@
 (ido-mode t)
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t
-      ido-case-fold nil
+      ido-case-fold t
       ido-auto-merge-work-directories-length -1
       ido-create-new-buffer 'always
-      ido-use-filename-at-point nil
+      ido-use-filename-at-point t
       ido-max-prospects 10)
 
 ;; Try out flx-ido for better flex matching between words
