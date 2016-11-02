@@ -167,6 +167,7 @@
 (--each '(css-mode-hook
           restclient-mode-hook
           js-mode-hook
+          js-mode
           java-mode
           ruby-mode
           markdown-mode

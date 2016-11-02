@@ -11,7 +11,7 @@
  '(ido-use-filename-at-point nil)
  '(package-selected-packages
    (quote
-    (yaml-mode sws-mode jade-mode auto-complete coffee-mode yesql-ghosts yasnippet whitespace-cleanup-mode visual-regexp textile-mode string-edit smartparens simple-httpd restclient prodigy paredit nodejs-repl move-text markdown-mode magit inflections ido-vertical-mode ido-at-point hydra htmlize highlight-escape-sequences guide-key groovy-mode gist flycheck-pos-tip flycheck-clojure flx-ido fill-column-indicator exec-path-from-shell elisp-slime-nav edn editorconfig dockerfile-mode dired-details css-eldoc clojure-mode-extra-font-locking)))
+    (js2-mode f flx flycheck yaml-mode sws-mode jade-mode auto-complete coffee-mode yesql-ghosts yasnippet whitespace-cleanup-mode visual-regexp textile-mode string-edit smartparens simple-httpd restclient prodigy paredit nodejs-repl move-text markdown-mode magit inflections ido-vertical-mode ido-at-point hydra htmlize highlight-escape-sequences guide-key groovy-mode gist flycheck-pos-tip flycheck-clojure flx-ido fill-column-indicator exec-path-from-shell elisp-slime-nav edn editorconfig dockerfile-mode dired-details css-eldoc clojure-mode-extra-font-locking)))
  '(safe-local-variable-values
    (quote
     ((eval font-lock-add-keywords nil
