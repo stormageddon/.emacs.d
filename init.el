@@ -28,11 +28,14 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
-;; Ethan
+;; Mike
 ;; Tweak the settings
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "#d8d9da")
+(set-face-background 'hl-line "#858786")
 (set-face-foreground 'highlight nil)
+
+(setq default-frame-alist
+      '((cursor-color . "palegoldenrod")))
 
 (setq magit-last-seen-setup-instructions "1.4.0")
 
@@ -184,7 +187,11 @@
 ;; Fix CoffeeScript
 (setq whitespace-action '(auto-cleanup))
 (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
-(custom-set-variables '(coffee-tab-width 2))
+(custom-set-variables '(coffee-tab-width 4))
+
+;; Javascript settings
+(setq js-indent-level 4)
+(setq js2-indent-level 4)
 
 (defvar auto-minor-mode-alist ()
   "Alist of filename patterns vs correpsonding minor mode functions, see `auto-mode-alist'
@@ -221,7 +228,7 @@ the checking happens for all pairs in auto-minor-mode-alist"
   (cons '("\\.js$" . auto-complete-mode)
     auto-minor-mode-alist))
 
-(setq js-indent-level 2)
+(setq js-indent-level 4)
 
 ;; Load stuff on demand
 (autoload 'skewer-start "setup-skewer" nil t)
@@ -311,3 +318,9 @@ the checking happens for all pairs in auto-minor-mode-alist"
 ;; Conclude init by setting up specifics for the current user
 (when (file-exists-p user-settings-dir)
   (mapc 'load (directory-files user-settings-dir nil "^[^#].*el$")))
+
+;; Flycheck syntax highlighting
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; Use spaces instead of tabs
+(setq-default indent-tabs-mode nil)

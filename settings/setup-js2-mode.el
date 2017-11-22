@@ -29,7 +29,7 @@
 (setq-default js2-include-node-externs t)
 (setq-default js2-concat-multiline-strings 'eol)
 (setq-default js2-rebind-eol-bol-keys nil)
-(setq-default js2-basic-offset 2)
+(setq-default js2-basic-offset 4)
 
 ;; Let flycheck handle parse errors
 (setq-default js2-show-parse-errors nil)

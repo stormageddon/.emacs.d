@@ -1,6 +1,6 @@
 (require 'font-lock)
 
-(defvar sws-tab-width 2)
+(defvar sws-tab-width 4)
 
 (defmacro sws-line-as-string ()
   "Returns the current line as a string."
@@ -116,7 +116,7 @@
   (kill-all-local-variables)
 
   ;; default tab width
-  (setq sws-tab-width 2)
+  (setq sws-tab-width 4)
   (make-local-variable 'indent-line-function)
   (setq indent-line-function 'sws-indent-line)
   (make-local-variable 'indent-region-function)

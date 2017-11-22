@@ -149,10 +149,10 @@
         sp-remove-active-pair-overlay
         sp-self-insert-command
         subtract-number-at-point
-        subword-right
-        tagedit-forward-barf-tag
         subword-left
         subword-right
+        subword-right
+        tagedit-forward-barf-tag
         tagedit-forward-slurp-tag
         tagedit-insert-dot
         tagedit-insert-equal
@@ -189,8 +189,8 @@
         beginning-of-buffer
         cider-eval-ns-form
         cleanup-buffer
-        coffee-dedent-line-backspace
         clj-jump-to-other-file
+        coffee-dedent-line-backspace
         custom-persp/emacs
         describe-key
         dired-toggle-read-only
@@ -202,8 +202,8 @@
         handle-switch-frame
         ido-switch-buffer
         js2-enter-key
-        js2r-expand-object
         js2r-add-to-globals-annotation
+        js2r-expand-object
         js2r-extract-var
         js2r-rename-var
         jump-between-source-and-test-files
@@ -214,6 +214,7 @@
         make-frame-command
         mc/add-cursor-on-click
         mc/add-cursors-to-all-matches
+        mouse-set-region
         multiple-cursors-mode
         ns-prev-frame
         paredit-backward-kill-word

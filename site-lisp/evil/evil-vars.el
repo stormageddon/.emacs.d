@@ -41,7 +41,7 @@ and \\[evil-shift-left]."
 (make-variable-buffer-local 'evil-shift-width)
 
 (defcustom evil-default-cursor
-  (list (or (frame-parameter nil 'cursor-color) "black") t)
+  (list (or (frame-parameter nil 'cursor-color) "white") t)
   "The default cursor.
 May be a cursor type as per `cursor-type', a color string as passed
 to `set-cursor-color', a zero-argument function for changing the

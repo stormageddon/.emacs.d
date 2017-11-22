@@ -44,13 +44,13 @@
   "Jade"
   "Major mode for editing jade node.js templates"
   (kill-all-local-variables)
-  (setq tab-width 2)
+  (setq tab-width 4)
 
   (setq mode-name "Jade")
   (setq major-mode 'jade-mode)
 
   ;; default tab width
-  (setq sws-tab-width 2)
+  (setq sws-tab-width 4)
   (make-local-variable 'indent-line-function)
   (setq indent-line-function 'sws-indent-line)
   (make-local-variable 'indent-region-function)
